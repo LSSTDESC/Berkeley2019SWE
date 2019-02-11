@@ -36,9 +36,20 @@ Students will be able to do the following:
 6. Develop your own Python package, installed using
    `pip install -e .`.
 
-### Reading from last year
-Pre-lesson readings & post-lesson resources 
+## Reading from last year
+
+Pre-lesson readings & post-lesson resources:
+
   - Practical Lessons in Peer Code Review - Salsita Software blog http://blog.salsitasoft.com/practical-lessons-in-peer-code-review/
   - Better Learning through Code Reviews - Capgemini Engineering blog https://capgemini.github.io/learning/better-learning-code-reviews/
   - Why code reviews matter (and actually save time!) - Atlassian Agile Coach https://www.atlassian.com/agile/code-reviews
   - 7 ways to up-level your code review skills - Asana blog https://blog.asana.com/2016/12/7-ways-to-uplevel-your-code-review-skills/
+
+## Course preparation
+
+0. Install Python version 3.5 or newer. Then run `python
+   check_setup.py` to verify your installation.
+1. Install an editor, such as [Atom](https://atom.io/)
+   or [VS Code](https://code.visualstudio.com/)
+2. Read the following articles/papers:
+   - To be finalized
