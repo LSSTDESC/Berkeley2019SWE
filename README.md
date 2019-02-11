@@ -6,6 +6,8 @@ Dark Energy school: session on Software Engineering
 
 15:15–17:00
 
+End with 15 mins. Q&A, if time allows.
+
 ## Outcomes
 
 ### General
