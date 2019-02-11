@@ -1,4 +1,4 @@
-# Berkeley2019SWE : Collaborative software development in Python
+# Collaborative software development in Python
 
 Dark Energy school: session on Software Engineering
 
