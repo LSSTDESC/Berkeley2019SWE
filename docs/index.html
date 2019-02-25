@@ -7,7 +7,7 @@
     <title>Collaborative software development in Python</title>
     <link rel="stylesheet" href="./css/reveal.css" />
     <link rel="stylesheet" href="./css/theme/simple.css" id="theme" />
-    <link rel="stylesheet" href="./css/highlight/github.css" />
+    <link rel="stylesheet" href="./css/highlight/monokai.css" />
     <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print" />
 
   </head>
@@ -56,7 +56,7 @@ $ source tutorial-env/bin/activate
 $ pip install -r requirements.txt
 ```
 
-ch
+checking your setup:
 ```bash
 (tutorial-env) flanusse@cori19:Berkeley2019SWE> python check_setup.py
 [ok] numpy         1.16.1
@@ -66,9 +66,27 @@ ch
 [ok] pytest        4.3.0
 ```
 </script></section></section><section  data-markdown><script type="text/template">
-## Setting up Travis CI
+## Continuous Integration
 </script></section><section  data-markdown><script type="text/template">
-The *.travis.yml* script:
+### What is CI?
+
+  - Allows you to automatically run your test suite at each commit
+
+  - Can automate tasks like documentation building, binary distribution
+
+  - Multiple solutions on the market
+    - [Travis CI](https://travis-ci.org/)
+    - [Circle CI](https://circleci.com/)
+    - [GitLab](https://docs.gitlab.com/ee/ci/) or [Jenkins](https://jenkins.io/)
+</script></section><section  data-markdown><script type="text/template">
+To see an example of CI in action, checkout https://travis-ci.org/LSSTDESC/CCL
+
+
+[![Build Status](https://travis-ci.org/LSSTDESC/CCL.svg?branch=master)](https://travis-ci.org/LSSTDESC/CCL)
+</script></section><section  data-markdown><script type="text/template">
+## Setting up Travis CI for our project
+</script></section><section ><section data-markdown><script type="text/template">
+First step is adding a *.travis.yml* script to the root of your project:
 
 ```yaml
 language: python
@@ -85,14 +103,43 @@ install:
 script:
   - pytest
 ```
-</script></section><section  data-markdown><script type="text/template">
-### Documentation
+more info here: https://docs.travis-ci.com/user/tutorial/
+</script></section><section data-markdown><script type="text/template">
+  - Go to https://travis-ci.org/ and sign-in with your GitHub account
+</script></section><section data-markdown><script type="text/template">
 
-Check out this [link](https://numpydoc.readthedocs.io/en/latest/format.html)
+  - Enable build for specific repository by browsing: https://travis-ci.org/account/repositories
 
 
-<aside class="notes"><p>speaker notes FTW!</p>
-</aside></script></section></div>
+  ![Travis repositories](assets/travis_repos.png)
+</script></section><section data-markdown><script type="text/template">
+   - Add a badge [![Build Status](https://travis-ci.org/EiffL/test.svg?branch=master)](https://travis-ci.org/EiffL/test) to your project README.md
+  ![Travis add a badge](assets/travis-badge.png)
+
+</script></section></section><section  data-markdown><script type="text/template">Back on GitHub
+</script></section><section ><section data-markdown><script type="text/template">
+   - Enable branch protection by going into [`settings/Branches`](https://github.com/EiffL/test/settings/branches):
+
+  ![Github Branch protection](assets/github-protection.png)
+
+</script></section><section data-markdown><script type="text/template">
+Let's check out an example: https://github.com/LSSTDESC/CCL/pull/442
+</script></section></section><section  data-markdown><script type="text/template">
+### [Read the docs](https://readthedocs.org)
+</script></section><section ><section data-markdown><script type="text/template">
+[Read the docs](https://readthedocs.org) allows you to automatically build and host your
+project documentation online.
+
+  - Online documenation is always up to date, you don't even have to think about it
+</script></section><section data-markdown><script type="text/template">
+  - Login to read the docs with your GitHub account: https://readthedocs.org/accounts/signup/
+
+  - Import a new project from your dashboard: https://readthedocs.org/dashboard/
+</script></section></section><section  data-markdown><script type="text/template">
+And now you have automated tests and online documentation hosting.
+
+Congratulations
+</script></section></div>
     </div>
 
     <script src="./lib/js/head.min.js"></script>

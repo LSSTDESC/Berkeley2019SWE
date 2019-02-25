@@ -5,7 +5,7 @@
 # $ reveal-md slides.md
 title: Collaborative software development in Python
 theme: simple
-highlightTheme: github
+highlightTheme: monokai
 ---
 
 ## Collaborative software development in Python
@@ -69,11 +69,35 @@ checking your setup:
 
 ---
 
-## Setting up Travis CI
+## Continuous Integration
 
 ---
 
-The *.travis.yml* script:
+### What is CI?
+
+  - Allows you to automatically run your test suite at each commit
+
+  - Can automate tasks like documentation building, binary distribution
+
+  - Multiple solutions on the market
+    - [Travis CI](https://travis-ci.org/)
+    - [Circle CI](https://circleci.com/)
+    - [GitLab](https://docs.gitlab.com/ee/ci/) or [Jenkins](https://jenkins.io/)
+
+---
+
+To see an example of CI in action, checkout https://travis-ci.org/LSSTDESC/CCL
+
+
+[![Build Status](https://travis-ci.org/LSSTDESC/CCL.svg?branch=master)](https://travis-ci.org/LSSTDESC/CCL)
+
+---
+
+## Setting up Travis CI for our project
+
+---
+
+First step is adding a *.travis.yml* script to the root of your project:
 
 ```yaml
 language: python
@@ -90,12 +114,59 @@ install:
 script:
   - pytest
 ```
+more info here: https://docs.travis-ci.com/user/tutorial/
+
+----
+
+  - Go to https://travis-ci.org/ and sign-in with your GitHub account
+
+----
+
+
+  - Enable build for specific repository by browsing: https://travis-ci.org/account/repositories
+
+
+  ![Travis repositories](assets/travis_repos.png)
+
+----
+
+   - Add a badge [![Build Status](https://travis-ci.org/EiffL/test.svg?branch=master)](https://travis-ci.org/EiffL/test) to your project README.md
+  ![Travis add a badge](assets/travis-badge.png)
+
+
+---
+Back on GitHub
 
 ---
 
-### Documentation
+   - Enable branch protection by going into [`settings/Branches`](https://github.com/EiffL/test/settings/branches):
 
-Check out this [link](https://numpydoc.readthedocs.io/en/latest/format.html)
+  ![Github Branch protection](assets/github-protection.png)
 
 
-Note: speaker notes FTW!
+----
+
+Let's check out an example: https://github.com/LSSTDESC/CCL/pull/442
+
+---
+
+### [Read the docs](https://readthedocs.org)
+
+---
+
+[Read the docs](https://readthedocs.org) allows you to automatically build and host your
+project documentation online.
+
+  - Online documenation is always up to date, you don't even have to think about it
+
+----
+
+  - Login to read the docs with your GitHub account: https://readthedocs.org/accounts/signup/
+
+  - Import a new project from your dashboard: https://readthedocs.org/dashboard/
+
+---
+
+And now you have automated tests and online documentation hosting.
+
+Congratulations
