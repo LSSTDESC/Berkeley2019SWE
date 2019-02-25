@@ -25,7 +25,7 @@ exercises.
 
 **15:20–15:40 (10 + 10)**
 
-Structure of a package (Python 3):
+Minimal structure of a package (Python 3):
 
 ```
 example-package
