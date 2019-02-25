@@ -35,23 +35,39 @@ example-package
 
 See `templates/example-package`.
 
-**Exercise:** Construct your own package, and add one or two
-submodules with at least one function each.  Make sure your
-package can be installed with `pip`:
+**Exercise:** Construct your own package, and add a submodule called
+`energy`.  Inside that submodule, add a function `abs_area`, that
+takes the absolute value of an input array, and calculates its area
+using
+the
+[trapezoidal rule](https://en.wikipedia.org/wiki/Trapezoidal_rule).
+
+If you get stuck on the implementation, use the following (incorrect)
+implementation for the time being:
+
+```
+import numpy as np
+
+def abs_area(x):
+    return np.sum(np.abs(x))
+```
+
+Make sure your package can be installed with `pip`:
 
 ```
 pip install .
 ```
 
-If you want to install your package, but keep working on it, without
-reinstalling:
+If you want to install your package, but keep developing it without
+reinstalling after each change, use:
 
 ```
 pip install --editable .
 ```
 
 Launch IPython (or the Python interpreter, if that is not installed),
-and import your new package.  Execute your test functions.
+and import your new package.  Execute some of its submodule functions,
+and make sure they perform according to your expectations.
 
 ## Test your code
 
