@@ -55,6 +55,25 @@ pip install --editable .
 Launch IPython (or the Python interpreter, if that is not installed),
 and import your new package.  Execute your test functions.
 
+## Test your code
+
+**16:30–16:45 (7 + 8)**
+
+**Exercise:** Add tests for each of the functions in your package.
+Run your test suite to ensure that it passes.  Now, introduce a
+breaking change in one of the functions, and run your test suite
+again: it should fail.  If not, go back, update your tests, and repeat
+the exercise.
+
+## Document your code with Sphinx & numpydoc
+
+**16:45–17:00 (7 + 8)**
+
+**Exercise:** Set up Sphinx documentation for your test package.
+Configure Sphinx to use `numpydoc`.  Ensure one or more of your
+functions have `numpydoc`-compatible docstrings.  Compile your
+documentation.
+
 ## Tracking your changes with Git
 
 **15:40–16:00 (10 + 10)**
@@ -101,25 +120,6 @@ to the screen.  Commit, and make a pull request.
 **Exercise:** Wait for your neighbor to review your pull request.
 Modify your code in response to their feedback.  Push the changes back
 to GitHub.  Work with them until they merge your change.
-
-## Test your code
-
-**16:30–16:45 (7 + 8)**
-
-**Exercise:** Add tests for each of the functions in your package.
-Run your test suite to ensure that it passes.  Now, introduce a
-breaking change in one of the functions, and run your test suite
-again: it should fail.  If not, go back, update your tests, and repeat
-the exercise.
-
-## Document your code with Sphinx & numpydoc
-
-**16:45–17:00 (7 + 8)**
-
-**Exercise:** Set up Sphinx documentation for your test package.
-Configure Sphinx to use `numpydoc`.  Ensure one or more of your
-functions have `numpydoc`-compatible docstrings.  Compile your
-documentation.
 
 ## Additional exercises
 
