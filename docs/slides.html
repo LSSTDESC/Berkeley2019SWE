@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Collaborative software development in Python</title>
+    <link rel="stylesheet" href="./css/reveal.css" />
+    <link rel="stylesheet" href="./css/theme/simple.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/github.css" />
+    <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
+
+## Collaborative software development in Python
+
+DE School, Berkeley 2019
+</script></section><section ><section data-markdown><script type="text/template">
+## Before we begin
+</script></section><section data-markdown><script type="text/template">
+### Setting up your environment locally
+
+Download the material and setup your environment:
+```bash
+$ git clone https://github.com/LSSTDESC/Berkeley2019SWE.git
+$ cd Berkeley2019SWE
+$ pip install --user -r requirements.txt
+```
+
+To check your setup:
+```bash
+$ python check_setup.py
+```
+</script></section><section data-markdown><script type="text/template">
+### Setting up your environment at NERSC
+
+Go to [https://jupyter-dev.nersc.gov](https://jupyter-dev.nersc.gov) and open a new terminal:
+
+  ![Jupyter lab](assets/jupyter-lab.png)
+
+</script></section><section data-markdown><script type="text/template">
+Downloading tutorial material:
+```bash
+$ git clone https://github.com/LSSTDESC/Berkeley2019SWE.git
+$ cd Berkeley2019SWE
+```
+
+Setting up a virtual environment
+```bash
+$ module load python3
+$ python3 -m venv tutorial-env
+$ source tutorial-env/bin/activate
+$ pip install -r requirements.txt
+```
+
+ch
+```bash
+(tutorial-env) flanusse@cori19:Berkeley2019SWE> python check_setup.py
+[ok] numpy         1.16.1
+[ok] scipy         1.2.1
+[ok] matplotlib    3.0.2
+[ok] notebook      5.7.4
+[ok] pytest        4.3.0
+```
+</script></section></section><section  data-markdown><script type="text/template">
+## Setting up Travis CI
+</script></section><section  data-markdown><script type="text/template">
+The *.travis.yml* script:
+
+```yaml
+language: python
+python:
+  - "2.7"
+  - "3.5"
+  - "3.6"
+
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+
+# command to run tests
+script:
+  - pytest
+```
+</script></section><section  data-markdown><script type="text/template">
+### Documentation
+
+Check out this [link](https://numpydoc.readthedocs.io/en/latest/format.html)
+
+
+<aside class="notes"><p>speaker notes FTW!</p>
+</aside></script></section></div>
+    </div>
+
+    <script src="./lib/js/head.min.js"></script>
+    <script src="./js/reveal.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // Optional libraries used to extend on reveal.js
+      var deps = [
+        { src: './lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: './plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+        { src: './plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+        { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: './plugin/zoom-js/zoom.js', async: true },
+        { src: './plugin/notes/notes.js', async: true },
+        { src: './plugin/math/math.js', async: true }
+      ];
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        dependencies: deps
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal.getQueryHash() || {};
+
+      var options = extend(defaultOptions, {}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>
