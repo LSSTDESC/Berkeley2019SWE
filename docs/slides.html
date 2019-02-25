@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Collaborative software development in Python</title>
+    <link rel="stylesheet" href="./css/reveal.css" />
+    <link rel="stylesheet" href="./css/theme/simple.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/monokai.css" />
+    <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
+
+## Collaborative software development in Python
+
+DE School, Berkeley 2019
+</script></section><section ><section data-markdown><script type="text/template">
+## Before we begin
+</script></section><section data-markdown><script type="text/template">
+### Setting up your environment locally
+
+Download the material and setup your environment:
+```bash
+$ git clone https://github.com/LSSTDESC/Berkeley2019SWE.git
+$ cd Berkeley2019SWE
+$ pip install --user -r requirements.txt
+```
+
+To check your setup:
+```bash
+$ python check_setup.py
+```
+</script></section><section data-markdown><script type="text/template">
+### Setting up your environment at NERSC
+
+Go to [https://jupyter-dev.nersc.gov](https://jupyter-dev.nersc.gov) and open a new terminal:
+
+  ![Jupyter lab](assets/jupyter-lab.png)
+
+</script></section><section data-markdown><script type="text/template">
+Downloading tutorial material:
+```bash
+$ git clone https://github.com/LSSTDESC/Berkeley2019SWE.git
+$ cd Berkeley2019SWE
+```
+
+Setting up a virtual environment
+```bash
+$ module load python3
+$ python3 -m venv tutorial-env
+$ source tutorial-env/bin/activate
+$ pip install -r requirements.txt
+```
+
+checking your setup:
+```bash
+(tutorial-env) flanusse@cori19:Berkeley2019SWE> python check_setup.py
+[ok] numpy         1.16.1
+[ok] scipy         1.2.1
+[ok] matplotlib    3.0.2
+[ok] notebook      5.7.4
+[ok] pytest        4.3.0
+```
+</script></section></section><section  data-markdown><script type="text/template">
+## Continuous Integration
+</script></section><section  data-markdown><script type="text/template">
+### What is CI?
+
+  - Allows you to automatically run your test suite at each commit
+
+  - Can automate tasks like documentation building, binary distribution
+
+  - Multiple solutions on the market
+    - [Travis CI](https://travis-ci.org/)
+    - [Circle CI](https://circleci.com/)
+    - [GitLab](https://docs.gitlab.com/ee/ci/) or [Jenkins](https://jenkins.io/)
+</script></section><section  data-markdown><script type="text/template">
+To see an example of CI in action, checkout https://travis-ci.org/LSSTDESC/CCL
+
+
+[![Build Status](https://travis-ci.org/LSSTDESC/CCL.svg?branch=master)](https://travis-ci.org/LSSTDESC/CCL)
+</script></section><section  data-markdown><script type="text/template">
+## Setting up Travis CI for our project
+</script></section><section ><section data-markdown><script type="text/template">
+First step is adding a *.travis.yml* script to the root of your project:
+
+```yaml
+language: python
+python:
+  - "2.7"
+  - "3.5"
+  - "3.6"
+
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+
+# command to run tests
+script:
+  - pytest
+```
+more info here: https://docs.travis-ci.com/user/tutorial/
+</script></section><section data-markdown><script type="text/template">
+  - Go to https://travis-ci.org/ and sign-in with your GitHub account
+</script></section><section data-markdown><script type="text/template">
+
+  - Enable build for specific repository by browsing: https://travis-ci.org/account/repositories
+
+
+  ![Travis repositories](assets/travis_repos.png)
+</script></section><section data-markdown><script type="text/template">
+   - Add a badge [![Build Status](https://travis-ci.org/EiffL/test.svg?branch=master)](https://travis-ci.org/EiffL/test) to your project README.md
+  ![Travis add a badge](assets/travis-badge.png)
+
+</script></section></section><section  data-markdown><script type="text/template">Back on GitHub
+</script></section><section ><section data-markdown><script type="text/template">
+   - Enable branch protection by going into [`settings/Branches`](https://github.com/EiffL/test/settings/branches):
+
+  ![Github Branch protection](assets/github-protection.png)
+
+</script></section><section data-markdown><script type="text/template">
+Let's check out an example: https://github.com/LSSTDESC/CCL/pull/442
+</script></section></section><section  data-markdown><script type="text/template">
+### [Read the docs](https://readthedocs.org)
+</script></section><section ><section data-markdown><script type="text/template">
+[Read the docs](https://readthedocs.org) allows you to automatically build and host your
+project documentation online.
+
+  - Online documenation is always up to date, you don't even have to think about it
+</script></section><section data-markdown><script type="text/template">
+  - Login to read the docs with your GitHub account: https://readthedocs.org/accounts/signup/
+
+  - Import a new project from your dashboard: https://readthedocs.org/dashboard/
+</script></section></section><section  data-markdown><script type="text/template">
+And now you have automated tests and online documentation hosting.
+
+Congratulations
+</script></section></div>
+    </div>
+
+    <script src="./lib/js/head.min.js"></script>
+    <script src="./js/reveal.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // Optional libraries used to extend on reveal.js
+      var deps = [
+        { src: './lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: './plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+        { src: './plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+        { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: './plugin/zoom-js/zoom.js', async: true },
+        { src: './plugin/notes/notes.js', async: true },
+        { src: './plugin/math/math.js', async: true }
+      ];
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        dependencies: deps
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal.getQueryHash() || {};
+
+      var options = extend(defaultOptions, {}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>
