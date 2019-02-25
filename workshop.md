@@ -120,3 +120,17 @@ the exercise.
 Configure Sphinx to use `numpydoc`.  Ensure one or more of your
 functions have `numpydoc`-compatible docstrings.  Compile your
 documentation.
+
+## Additional exercises
+
+1. PyPi
+
+Follow the instructions at
+https://packaging.python.org/guides/using-testpypi/ and upload your
+library to the test packaging index.
+
+Check whether your package can be installed, using:
+
+```
+$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple your-package
+```
