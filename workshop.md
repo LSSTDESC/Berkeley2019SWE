@@ -23,8 +23,6 @@ exercises.
 
 ## Building a Python package from scratch
 
-**15:20–15:40 (10 + 10)**
-
 Minimal structure of a package (Python 3):
 
 ```
@@ -57,8 +55,6 @@ and import your new package.  Execute your test functions.
 
 ## Test your code
 
-**16:30–16:45 (7 + 8)**
-
 **Exercise:** Add tests for each of the functions in your package.
 Run your test suite to ensure that it passes.  Now, introduce a
 breaking change in one of the functions, and run your test suite
@@ -67,16 +63,12 @@ the exercise.
 
 ## Document your code with Sphinx & numpydoc
 
-**16:45–17:00 (7 + 8)**
-
 **Exercise:** Set up Sphinx documentation for your test package.
 Configure Sphinx to use `numpydoc`.  Ensure one or more of your
 functions have `numpydoc`-compatible docstrings.  Compile your
 documentation.
 
 ## Tracking your changes with Git
-
-**15:40–16:00 (10 + 10)**
 
 - `git init`, to start tracking current directory.
 - Staging changes (concept, `git add`, `git add -p`)
@@ -100,14 +92,16 @@ merge.
 
 ## GitHub
 
-**16:00–16:30 (~ 15 + 15)**
-
-### Start your own project
+### Start a project and upload your source
 
 **Exercise:** Make a new GitHub repository for your package.  Upload
 your package.
 
-### Make a pull request
+### Interlude: ReadTheDocs and Travis
+
+### Social GitHub
+
+#### Make a pull request
 
 **Exercise:** Talk to one of your neighbors, and get their repo
 location on GitHub.  **Fork** their repository, and `git clone` it
@@ -115,7 +109,7 @@ locally.  Make a feature branch `add-hello`.  Add a new function to
 one of their submodules `def hello(name): ...` that prints a greeting
 to the screen.  Commit, and make a pull request.
 
-### Review a pull request
+#### Review a pull request
 
 **Exercise:** Wait for your neighbor to review your pull request.
 Modify your code in response to their feedback.  Push the changes back
