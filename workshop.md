@@ -1,4 +1,6 @@
-# DE SWE Workshop
+---
+title: DE SWE Workshop
+---
 
 Collaborative software development in Python.
 
@@ -23,6 +25,10 @@ exercises.
 
 ## Building a Python package from scratch
 
+<div class="live-demo">
+**Demonstration:** Building a Python package
+</div>
+
 Minimal structure of a package (Python 3):
 
 ```
@@ -33,8 +39,9 @@ example-package
 └── └── energy.py
 ```
 
-See `templates/example-package`.
+See `templates/*-example-package-*`.
 
+<div class="exercise">
 **Exercise:** Construct your own package, and add a submodule called
 `energy`.  Inside that submodule, add a function `abs_area`, that
 takes the absolute value of an input array, and calculates its area
@@ -69,22 +76,40 @@ Launch IPython (or the Python interpreter, if that is not installed),
 and import your new package.  Execute some of its submodule functions,
 and make sure they perform according to your expectations.
 
+</div>
+
 ## Test your code
 
+<div class="live-demo">
+**Demonstration:** Writing a test suite
+</div>
+
+<div class="exercise">
 **Exercise:** Add tests for each of the functions in your package.
 Run your test suite to ensure that it passes.  Now, introduce a
 breaking change in one of the functions, and run your test suite
 again: it should fail.  If not, go back, update your tests, and repeat
 the exercise.
+</div>
 
 ## Document your code with Sphinx & numpydoc
 
+<div class="live-demo">
+**Demonstration:** Documenting with Sphinx
+</div>
+
+<div class="exercise">
 **Exercise:** Set up Sphinx documentation for your test package.
 Configure Sphinx to use `numpydoc`.  Ensure one or more of your
 functions have `numpydoc`-compatible docstrings.  Compile your
 documentation.
+</div>
 
 ## Tracking your changes with Git
+
+<div class="live-demo">
+**Demonstration:** git: feature branches
+</div>
 
 - `git init`, to start tracking current directory.
 - Staging changes (concept, `git add`, `git add -p`)
@@ -98,6 +123,7 @@ works.
   - Rebasing history
   - `git reflog`
 
+<div class="exercise">
 **Exercise:** Make two branches: `docs` and `add-func`.  In `docs`,
 update the `README.md`, with a short description of the package and
 commit.  In `add-func`, add a new function to one of the submodules,
@@ -105,17 +131,33 @@ commit.  Also on `add-func`, modify the `README.md` file to mention
 the function you added.  Switch back to `master`, and merge `docs` and
 then `add-func`.  Resolve any conflicts that arise to complete the
 merge.
+</div>
 
 ## GitHub
 
 ### Start a project and upload your source
 
+<div class="live-demo">
+**Demonstration:** GitHub: starting a project
+</div>
+
+
+<div class="exercise">
 **Exercise:** Make a new GitHub repository for your package.  Upload
 your package.
+</div>
 
 ### Interlude: ReadTheDocs and Travis-CI
 
+<div class="live-demo">
+**Demonstration:** How to set up ReadTheDocs and Travis-CI for your repo
+</div>
+
 ### Social GitHub
+
+<div class="live-demo">
+**Demonstration:** GitHub: Making and reviewing a Pull Request
+</div>
 
 #### Make a pull request
 
@@ -127,20 +169,26 @@ to the screen.  Commit, and make a pull request.
 
 #### Review a pull request
 
+<div class="exercise">
 **Exercise:** Wait for your neighbor to review your pull request.
 Modify your code in response to their feedback.  Push the changes back
 to GitHub.  Work with them until they merge your change.
+</div>
 
 ## Additional exercises
 
+<div class="exercise">
+
 1. PyPi
 
-Follow the instructions at
-https://packaging.python.org/guides/using-testpypi/ and upload your
-library to the test packaging index.
+   Follow the instructions at
+   https://packaging.python.org/guides/using-testpypi/ and upload your
+   library to the test packaging index.
 
-Check whether your package can be installed, using:
+   Check whether your package can be installed, using:
 
-```
-$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple your-package
-```
+   ```
+   $ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple your-package
+   ```
+
+</div>
