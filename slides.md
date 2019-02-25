@@ -1,4 +1,8 @@
 ---
+# To use reveal-md, first install it using npm:
+# $ npm install -g reveal-md
+# Then run it, pointing to this slide deck:
+# $ reveal-md slides.md
 title: Collaborative software development in Python
 theme: simple
 highlightTheme: rainbow
