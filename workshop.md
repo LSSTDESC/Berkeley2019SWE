@@ -23,6 +23,10 @@ through the entire schedule.  If you already understand what is being
 taught, please take a walk around and help others complete the
 exercises.
 
+##  Before we begin
+
+Make sure to setup your environment for the workshop by following [these instructions](https://lsstdesc.github.io/Berkeley2019SWE/slides.html#/1)
+
 ## Building a Python package from scratch
 
 <div class="live-demo">
@@ -200,6 +204,7 @@ your package.
 
 <div class="live-demo">
 **Demonstration:** How to set up ReadTheDocs and Travis-CI for your repo
+Slides are [here](https://lsstdesc.github.io/Berkeley2019SWE/slides.html#/2)
 </div>
 
 ### Social GitHub
