@@ -57,7 +57,7 @@ $ source tutorial-env/bin/activate
 $ pip install -r requirements.txt
 ```
 
-ch
+checking your setup:
 ```bash
 (tutorial-env) flanusse@cori19:Berkeley2019SWE> python check_setup.py
 [ok] numpy         1.16.1
