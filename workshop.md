@@ -97,7 +97,7 @@ merge.
 **Exercise:** Make a new GitHub repository for your package.  Upload
 your package.
 
-### Interlude: ReadTheDocs and Travis
+### Interlude: ReadTheDocs and Travis-CI
 
 ### Social GitHub
 
