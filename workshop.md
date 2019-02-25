@@ -29,11 +29,13 @@ exercises.
 **Demonstration:** Building a Python package
 </div>
 
-Minimal structure of a package (Python 3):
+Minimal package structure:
 
 ```
 example-package
 ├── README.md
+├── LICENSE.txt
+├── requirements.txt
 ├── setup.py
 ├── darkbox
 └── └── energy.py
@@ -52,7 +54,7 @@ the
 If you get stuck on the implementation, use the following (incorrect)
 implementation for the time being:
 
-```
+```python
 import numpy as np
 
 def abs_area(x):
@@ -61,20 +63,20 @@ def abs_area(x):
 
 Make sure your package can be installed with `pip`:
 
-```
-pip install .
+```bash
+$ pip install .
 ```
 
-If you want to install your package, but keep developing it without
+If you want to install your package while developing it, and without
 reinstalling after each change, use:
 
-```
-pip install --editable .
+```bash
+$ pip install --editable .
 ```
 
-Launch IPython (or the Python interpreter, if that is not installed),
-and import your new package.  Execute some of its submodule functions,
-and make sure they perform according to your expectations.
+Launch a Python terminal (IPython, Python, or Jupyter) and import your
+new package.  Execute your submodule function, and make sure it
+performs according to your expectation.
 
 </div>
 
@@ -85,11 +87,22 @@ and make sure they perform according to your expectations.
 </div>
 
 <div class="exercise">
-**Exercise:** Add tests for each of the functions in your package.
-Run your test suite to ensure that it passes.  Now, introduce a
-breaking change in one of the functions, and run your test suite
-again: it should fail.  If not, go back, update your tests, and repeat
-the exercise.
+**Exercise:** Add tests for each function in your package.  You may
+use all
+the
+[`assert_` functions inside `numpy.testing`](https://docs.scipy.org/doc/numpy/reference/routines.testing.html).
+Run your test suite to ensure that it passes:
+
+```bash
+# Execute this from one directory above your package
+
+$ PYTHONPATH=. pytest
+```
+
+Now, introduce a breaking change in one of the functions, and run your
+test suite again: it should fail.  If it does not, go back, improve
+your tests, and repeat the exercise.
+
 </div>
 
 ## Document your code with Sphinx & numpydoc
@@ -99,10 +112,42 @@ the exercise.
 </div>
 
 <div class="exercise">
-**Exercise:** Set up Sphinx documentation for your test package.
-Configure Sphinx to use `numpydoc`.  Ensure one or more of your
-functions have `numpydoc`-compatible docstrings.  Compile your
-documentation.
+
+**Exercise:** Set up Sphinx documentation for your test package using
+`sphinx-quickstart`.  In the generated `docs/conf.py`, ensure you have
+the following extensions enabled:
+
+```python
+extensions = [
+    'sphinx.ext.autosummary',
+    'sphinx.ext.mathjax',
+    'numpydoc'
+]
+```
+
+Optionally, you can enable Markdown rendering:
+
+```python
+from recommonmark.parser import CommonMarkParser
+
+source_parsers = {
+    '.md': CommonMarkParser,
+}
+
+source_suffix = ['.rst', '.md']
+```
+
+Ensure one or more of your functions
+have
+[`numpydoc`-compatible docstrings](https://numpydoc.readthedocs.io).
+Execute the following command to generate API docs:
+
+```bash
+$ sphinx-apidoc --module-first --no-toc --separate --force -o api ../<your-package-name>
+```
+
+Compile your documentation using `make html`.
+
 </div>
 
 ## Tracking your changes with Git
@@ -119,18 +164,23 @@ works.
 
 - Creating feature branches
 - Switching between branches
+- Merging branches
+
+<!--
 - Merging conflicts
   - Rebasing history
   - `git reflog`
+-->
 
 <div class="exercise">
-**Exercise:** Make two branches: `docs` and `add-func`.  In `docs`,
-update the `README.md`, with a short description of the package and
-commit.  In `add-func`, add a new function to one of the submodules,
-commit.  Also on `add-func`, modify the `README.md` file to mention
-the function you added.  Switch back to `master`, and merge `docs` and
-then `add-func`.  Resolve any conflicts that arise to complete the
-merge.
+
+**Exercise:** From the `master` (default) branch, make two branches:
+`docs` and `add-func` using `git checkout -b <branch_name>`.  In
+`docs`, update the `README.md`, with a short description of the
+package and commit.  In `add-func`, add a new function to one of the
+submodules, commit.  Switch back to `master`, and merge the `docs`
+branch, and then the `add-func` branch.
+
 </div>
 
 ## GitHub
@@ -140,7 +190,6 @@ merge.
 <div class="live-demo">
 **Demonstration:** GitHub: starting a project
 </div>
-
 
 <div class="exercise">
 **Exercise:** Make a new GitHub repository for your package.  Upload
@@ -159,27 +208,31 @@ your package.
 **Demonstration:** GitHub: Making and reviewing a Pull Request
 </div>
 
+One example
+of
+[a good quality PR](https://github.com/scikit-image/scikit-image/pull/2327).
+
 #### Make a pull request
 
 **Exercise:** Talk to one of your neighbors, and get their repo
 location on GitHub.  **Fork** their repository, and `git clone` it
 locally.  Make a feature branch `add-hello`.  Add a new function to
-one of their submodules `def hello(name): ...` that prints a greeting
-to the screen.  Commit, and make a pull request.
+their `energy` submodule (or anywhere else, if that doesn't exist):
+`def norm(x): ...`, that calculates the Euclidean norm,
+$\left\|{\boldsymbol {x}}\right\|_{2}:= \textrm{sqrt} \left( x_{1}^{2} + \cdots +
+x_{n}^{2} \right)$.  Commit, and make a pull request.
 
-#### Review a pull request
-
-<div class="exercise">
-**Exercise:** Wait for your neighbor to review your pull request.
-Modify your code in response to their feedback.  Push the changes back
-to GitHub.  Work with them until they merge your change.
+<div class="exercise"> **Exercise:** Wait for your neighbor to review
+your pull request.  Modify your code in response to their feedback.
+Push the changes back to GitHub.  Work with them until they are happy
+to merge your change.
 </div>
 
 ## Additional exercises
 
 <div class="exercise">
 
-1. PyPi
+1. **PyPi (Python Packaging Index) publication**
 
    Follow the instructions at
    https://packaging.python.org/guides/using-testpypi/ and upload your
@@ -187,7 +240,7 @@ to GitHub.  Work with them until they merge your change.
 
    Check whether your package can be installed, using:
 
-   ```
+   ```bash
    $ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple your-package
    ```
 
