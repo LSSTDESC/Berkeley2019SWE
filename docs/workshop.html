@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>DE SWE Workshop</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style>
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="workshop.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">DE SWE Workshop</h1>
+</header>
+<p>Collaborative software development in Python.</p>
+<h2 id="introduction">Introduction</h2>
+<p>In the next two hours, we are going to build our own Python package. This package will be installable via the standard installation mechanism (<code>pip</code>), and will be tested and documented. We will host the source code for our project online, on GitHub, and use the <code>git</code> tool to track changes to our package as it evolves. We will also see how to make modifications to others’ software, as well as how to have them contribute to ours.</p>
+<p>Each lesson is broken up into a short lecture, followed by hands-on exercise time.</p>
+<p>The goal of today’s workshop is for you to <em>leave with practices skills</em>, not to cover as much ground as possible—so, we may not get through the entire schedule. If you already understand what is being taught, please take a walk around and help others complete the exercises.</p>
+<h2 id="building-a-python-package-from-scratch">Building a Python package from scratch</h2>
+<div class="live-demo">
+<p><strong>Demonstration:</strong> Building a Python package</p>
+</div>
+<p>Minimal package structure:</p>
+<pre><code>example-package
+├── README.md
+├── LICENSE.txt
+├── requirements.txt
+├── setup.py
+├── darkbox
+└── └── energy.py</code></pre>
+<p>See <code>templates/*-example-package-*</code>.</p>
+<div class="exercise">
+<p><strong>Exercise:</strong> Construct your own package, and add a submodule called <code>energy</code>. Inside that submodule, add a function <code>abs_area</code>, that takes the absolute value of an input array, and calculates its area using the <a href="https://en.wikipedia.org/wiki/Trapezoidal_rule">trapezoidal rule</a>.</p>
+<p>If you get stuck on the implementation, use the following (incorrect) implementation for the time being:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="im">import</span> numpy <span class="im">as</span> np</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw">def</span> abs_area(x):</a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="cf">return</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(x))</a></code></pre></div>
+<p>Make sure your package can be installed with <code>pip</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="ex">pip</span> install .</a></code></pre></div>
+<p>If you want to install your package while developing it, and without reinstalling after each change, use:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="ex">pip</span> install --editable .</a></code></pre></div>
+<p>Launch a Python terminal (IPython, Python, or Jupyter) and import your new package. Execute your submodule function, and make sure it performs according to your expectation.</p>
+</div>
+<h2 id="test-your-code">Test your code</h2>
+<div class="live-demo">
+<p><strong>Demonstration:</strong> Writing a test suite</p>
+</div>
+<div class="exercise">
+<p><strong>Exercise:</strong> Add tests for each function in your package. You may use all the <a href="https://docs.scipy.org/doc/numpy/reference/routines.testing.html"><code>assert_</code> functions inside <code>numpy.testing</code></a>. Run your test suite to ensure that it passes:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># Execute this from one directory above your package</span></a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3">$ <span class="va">PYTHONPATH=</span>. <span class="ex">pytest</span></a></code></pre></div>
+<p>Now, introduce a breaking change in one of the functions, and run your test suite again: it should fail. If it does not, go back, improve your tests, and repeat the exercise.</p>
+</div>
+<h2 id="document-your-code-with-sphinx-numpydoc">Document your code with Sphinx &amp; numpydoc</h2>
+<div class="live-demo">
+<p><strong>Demonstration:</strong> Documenting with Sphinx</p>
+</div>
+<div class="exercise">
+<p><strong>Exercise:</strong> Set up Sphinx documentation for your test package using <code>sphinx-quickstart</code>. In the generated <code>docs/conf.py</code>, ensure you have the following extensions enabled:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1">extensions <span class="op">=</span> [</a>
+<a class="sourceLine" id="cb6-2" title="2">    <span class="st">&#39;sphinx.ext.autosummary&#39;</span>,</a>
+<a class="sourceLine" id="cb6-3" title="3">    <span class="st">&#39;sphinx.ext.mathjax&#39;</span>,</a>
+<a class="sourceLine" id="cb6-4" title="4">    <span class="st">&#39;numpydoc&#39;</span></a>
+<a class="sourceLine" id="cb6-5" title="5">]</a></code></pre></div>
+<p>Optionally, you can enable Markdown rendering:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="im">from</span> recommonmark.parser <span class="im">import</span> CommonMarkParser</a>
+<a class="sourceLine" id="cb7-2" title="2"></a>
+<a class="sourceLine" id="cb7-3" title="3">source_parsers <span class="op">=</span> {</a>
+<a class="sourceLine" id="cb7-4" title="4">    <span class="st">&#39;.md&#39;</span>: CommonMarkParser,</a>
+<a class="sourceLine" id="cb7-5" title="5">}</a>
+<a class="sourceLine" id="cb7-6" title="6"></a>
+<a class="sourceLine" id="cb7-7" title="7">source_suffix <span class="op">=</span> [<span class="st">&#39;.rst&#39;</span>, <span class="st">&#39;.md&#39;</span>]</a></code></pre></div>
+<p>Ensure one or more of your functions have <a href="https://numpydoc.readthedocs.io"><code>numpydoc</code>-compatible docstrings</a>. Execute the following command to generate API docs:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="ex">sphinx-apidoc</span> --module-first --no-toc --separate --force -o api ../<span class="op">&lt;</span>your-package-name<span class="op">&gt;</span></a></code></pre></div>
+<p>Compile your documentation using <code>make html</code>.</p>
+</div>
+<h2 id="tracking-your-changes-with-git">Tracking your changes with Git</h2>
+<div class="live-demo">
+<p><strong>Demonstration:</strong> git: feature branches</p>
+</div>
+<ul>
+<li><code>git init</code>, to start tracking current directory.</li>
+<li>Staging changes (concept, <code>git add</code>, <code>git add -p</code>)</li>
+</ul>
+<p>For collaborative purposes, it is important to know how branching works.</p>
+<ul>
+<li>Creating feature branches</li>
+<li>Switching between branches</li>
+<li>Merging branches</li>
+</ul>
+<!--
+- Merging conflicts
+  - Rebasing history
+  - `git reflog`
+-->
+<div class="exercise">
+<p><strong>Exercise:</strong> From the <code>master</code> (default) branch, make two branches: <code>docs</code> and <code>add-func</code> using <code>git checkout -b &lt;branch_name&gt;</code>. In <code>docs</code>, update the <code>README.md</code>, with a short description of the package and commit. In <code>add-func</code>, add a new function to one of the submodules, commit. Switch back to <code>master</code>, and merge the <code>docs</code> branch, and then the <code>add-func</code> branch.</p>
+</div>
+<h2 id="github">GitHub</h2>
+<h3 id="start-a-project-and-upload-your-source">Start a project and upload your source</h3>
+<div class="live-demo">
+<p><strong>Demonstration:</strong> GitHub: starting a project</p>
+</div>
+<div class="exercise">
+<p><strong>Exercise:</strong> Make a new GitHub repository for your package. Upload your package.</p>
+</div>
+<h3 id="interlude-readthedocs-and-travis-ci">Interlude: ReadTheDocs and Travis-CI</h3>
+<div class="live-demo">
+<p><strong>Demonstration:</strong> How to set up ReadTheDocs and Travis-CI for your repo</p>
+</div>
+<h3 id="social-github">Social GitHub</h3>
+<div class="live-demo">
+<p><strong>Demonstration:</strong> GitHub: Making and reviewing a Pull Request</p>
+</div>
+<p>One example of <a href="https://github.com/scikit-image/scikit-image/pull/2327">a good quality PR</a>.</p>
+<h4 id="make-a-pull-request">Make a pull request</h4>
+<p><strong>Exercise:</strong> Talk to one of your neighbors, and get their repo location on GitHub. <strong>Fork</strong> their repository, and <code>git clone</code> it locally. Make a feature branch <code>add-hello</code>. Add a new function to their <code>energy</code> submodule (or anywhere else, if that doesn’t exist): <code>def norm(x): ...</code>, that calculates the Euclidean norm, <span class="math inline">∥<strong>x</strong>∥<sub>2</sub> := sqrt(<em>x</em><sub>1</sub><sup>2</sup>+⋯+<em>x</em><sub><em>n</em></sub><sup>2</sup>)</span>. Commit, and make a pull request.</p>
+<div class="exercise">
+<p><strong>Exercise:</strong> Wait for your neighbor to review your pull request. Modify your code in response to their feedback. Push the changes back to GitHub. Work with them until they are happy to merge your change.</p>
+</div>
+<h2 id="additional-exercises">Additional exercises</h2>
+<div class="exercise">
+<ol type="1">
+<li><p><strong>PyPi (Python Packaging Index) publication</strong></p>
+<p>Follow the instructions at https://packaging.python.org/guides/using-testpypi/ and upload your library to the test packaging index.</p>
+<p>Check whether your package can be installed, using:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="ex">pip</span> install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple your-package</a></code></pre></div></li>
+</ol>
+</div>
+</body>
+</html>
