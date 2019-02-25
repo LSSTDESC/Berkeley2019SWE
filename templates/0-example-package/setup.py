@@ -10,5 +10,6 @@ setup(
     author_email='your@email.com',
     license='BSD',
     packages=['darkbox'],
+    python_requires='>=3.5',
     zip_safe=False
 )
