@@ -28,9 +28,15 @@ def square(x):
     without escaping, otherwise we need quite a few more back-slashes
     in there.
 
+    Examples
+    --------
+    >>> square([1, 2, 3])
+    14.0
+
     References
     ----------
     .. [0] numpydoc docstring guide, https://numpydoc.readthedocs.io/en/latest/format.html
 
     """
+    x = np.asarray(x, dtype=float)
     return np.sum(x**2)
